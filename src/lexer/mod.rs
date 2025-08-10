@@ -222,6 +222,14 @@ impl Lexer {
                 '{' => self.add_token(TokenType::Lbrace, "{".to_string()),
                 '}' => self.add_token(TokenType::Rbrace, "}".to_string()),
                 ';' => self.add_token(TokenType::Not, ";".to_string()),
+                '=' => {
+                    if self.input.peek().unwrap_or_default() == '>' {
+                        self.input.read(1);
+                        self.add_token(TokenType::Arrow, "=>".to_string());
+                    } else {
+                        self.add_token(TokenType::Equals, "=".to_string());
+                    }
+                }
                 _ => {
                     if current.is_numeric() {
                         let mut number = String::new();

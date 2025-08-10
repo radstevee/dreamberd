@@ -18,6 +18,7 @@ pub enum TokenType {
     BoolLiteral,
     Return,
     Not,
+    Equals,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
@@ -58,6 +59,7 @@ impl Debug for Token {
             TokenType::BoolLiteral => write!(f, "BoolLiteral({})", self.value.clone()),
             TokenType::Return => write!(f, "Return"),
             TokenType::Not => write!(f, "Not"),
+            TokenType::Equals => write!(f, "Equals"),
         }
     }
 }
